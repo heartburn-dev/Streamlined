@@ -1,0 +1,33 @@
+{
+        admin off
+        acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+}
+
+PAYLOAD_DOMAIN {
+    log {
+        output file /var/log/caddy.log
+    }
+
+    @user-agent-whitelist {
+        header User-Agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/588.0.3029.110 Safari/537.36"
+    }
+
+    header {
+                -Server
+                +X-Robots-Tag "noindex, nofollow, nosnippet, noarchive"
+                +X-Content-Type-Options "nosniff"
+    }
+
+	handle /api/v1/download/endpoint/* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.4 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+        
+	}
+
+	handle /* {
+                redir https://www.youtube.com/watch?v=eGRmtOLcd_I permanent
+	}
+}

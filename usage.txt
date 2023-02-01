@@ -1,0 +1,65 @@
+Automated C2 Overview
+=====================
+- Ensure that aws is configured with valid credentials in the CLI, using `aws configure`
+- Set region to eu-west-2 (This is London)
+
+Teamserver Usage 
+================
+- Connect to sliver instance via SSH with the generated SSH key in ~/.ssh/domain
+- Run /root/sliver-server to run the server and create configs for operators
+- Transfer the configs to the respective operators
+
+Operator Connection
+===================
+- Operators are potentially not connecting from the machine the C2 infrastructure was built on
+- Due to the power of the Nebula mesh overlay, all they need to do is download nebula and receive a copy of the following files:
+
+	- operator.yaml 
+	- operator.crt
+	- operator.key
+	- ca.crt
+
+- Run nebula locally, replacing the LIGHTHOUSE_IP_ADDRESS with the public IP of the lighthouse from either EC2 GUI or the Terraform output
+- `sed -i 's/LIGHTHOUSE_IP_ADDRESS/52.56.92.145/g' operator.yaml`
+
+- Ensure that the path to the nebula CA and operator key/crt is correctly set in operator.yaml
+- Run the updated config with the local nebula install
+- `sudo ./nebula -config operator.yaml`
+
+- Teamserver should now be accessible, with the operator receiving a 10.69.69.X address
+- Import the operator sliver config that was transferred from the teamserver 
+- `sliver import ~/.sliver/configs/toby.cfg`
+
+- The operator can now connect to sliver on their local machine using the power of Nebula!
+
+┌──(kali㉿kali)-[/opt/infrastructure_setups/redteam-infrastructure]                                                                                                                   
+└─$ sliver                                                                                                                                                                            
+? Select a server: toby@10.69.69.5 (322e169853ac8577)                                                                                                                                 
+Connecting to 10.69.69.5:31337 ...                                                                                                                                                    
+                                                                                                                                                                                      
+    ███████╗██╗     ██╗██╗   ██╗███████╗██████╗                                                                                                                                       
+    ██╔════╝██║     ██║██║   ██║██╔════╝██╔══██╗                                                                                                                                      
+    ███████╗██║     ██║██║   ██║█████╗  ██████╔╝                                                                                                                                      
+    ╚════██║██║     ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗                                                                                                                                      
+    ███████║███████╗██║ ╚████╔╝ ███████╗██║  ██║                                                                                                                                      
+    ╚══════╝╚══════╝╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝                                                                                                                                      
+                                                                                                                                                                                      
+All hackers gain haste                                                                                                                                                                
+[*] Server v1.5.33 - ce213edab44d33b2c232e0b8dc6c38f7fdabeee7                                                                                                                         
+[*] Client v1.5.29 - 32e4ed63e98ada7ca4283e64d1fb0b7ee60322fc                                                                                                                         
+[*] Welcome to the sliver shell, please type 'help' for options
+[*] Check for updates with the 'update' command
+
+
+Downloading Payloads (TO DO)
+============================
+- The payload server and teamserver are split to avoid pulling payloads from the main C2 domain
+- Payload server runs on the subdomain and is accessible via the `/api/v1/download/endpoint/*` endpoint with a valid user agent
+- A python HTTPS server is automatically started as a background process from a "/home/ubuntu/payloads" directory
+- Any payloads files that need to be downloaded onto the service can be hosted from here
+
+
+Namecheap VS AWS Route53 (TO DO)
+================================
+- Add option to use a domain registered in Namecheap to the Python script
+

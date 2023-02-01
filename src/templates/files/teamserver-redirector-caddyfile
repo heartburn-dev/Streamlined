@@ -1,0 +1,231 @@
+{
+        admin off
+        acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+}
+
+TEAMSERVER_DOMAIN {
+    log {
+        output file /var/log/caddy.log
+    }
+
+    @user-agent-whitelist {
+        header User-Agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/588.0.3029.110 Safari/537.36"
+    }
+
+    header {
+                -Server
+                +X-Robots-Tag "noindex, nofollow, nosnippet, noarchive"
+                +X-Content-Type-Options "nosniff"
+    }
+
+	handle /jsscript* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /umd* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /assetts* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /bundlle* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /bundlles* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /scriptts* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /scriptt* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /javascriptts* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /javascriptt* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /jscriptt* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /api* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /upload* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /actions* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /restt* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /v5* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /auth* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /oauth2* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /namespaces* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /static* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /www* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /assets* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /images* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /icons* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /image* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /icon* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+
+    handle /png* {
+		reverse_proxy @user-agent-whitelist https://10.69.69.5 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+        }
+	}
+	handle /* {
+                redir https://www.youtube.com/watch?v=eGRmtOLcd_I permanent
+	}
+}
