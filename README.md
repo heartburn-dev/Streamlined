@@ -5,6 +5,7 @@
 - Clean up Caddy Files
 - Add pre-configuration instructions
 - Add note that this should not be used in prod - cloud teamserver
+- Add reference links for rasta and co
 
 # Streamline - Automated C2 Infrastructure Deployment
 
@@ -38,7 +39,7 @@ Check that out [here](https://blog.malicious.group/automating-c2-infrastructure-
 
 The following image depicts the design of the application when it is initiated.
 
-![C2 Infrastructure Overview](images/Overview.png)
+![C2 Infrastructure Overview](images/OverviewWithBG.png)
 
 ## Pre-Configuration Steps
 - AWS Setup with domain 
