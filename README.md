@@ -95,7 +95,7 @@ teamserver-redirector = "18.130.89.113"
 
 At this point, DNS configurations should be checked to confirm they're working as expected within Route53. 
 
-![DNS Propagation](images/dns_prop.png)
+![DNS Propagation](images/dns_prop.PNG)
 
 During the build process, SSH keys are generated in your current user's `.ssh` directory. The public keys have been transferred to the boxes to allow for management. At this point, it would be prudce to confirm that Nebula has been successfully configured on each box. I recommend SSHing into each, and pinging each of the machines in the Nebula network.
 
@@ -198,7 +198,7 @@ This directive states that all traffic hitting the `/*` endpoint of the website 
 
 After confirming the redirector is working, you can make requests to the endpoint again in a proxy and add the user agent specified in the `src/templates/files/sliver-c2-profile` file, alongside any of the endpoints listed. The response should now go through Caddy to the internal server. 
 
-![Redirector Config 2](images/redirect2.png)
+![Redirector Config 2](images/redirect2.PNG)
 
 Excellent.
 
