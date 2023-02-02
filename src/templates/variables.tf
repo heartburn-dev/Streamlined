@@ -1,11 +1,11 @@
 variable "aws_domain" {
     description = "Domain used in the engagement"
-    default = "towerofterror.co.uk"
+    default = "C2_DOMAIN"
 }
 
 variable "current_username" {
   type = string
-  default = "kali"
+  default = "CURRENT_USER"
   description = "The user running the script. Needed to write to home directory as $HOME and ~/ was breaking... Sporadically..."
 }
 
@@ -38,9 +38,5 @@ variable "caddy_download" {
   variable "aws_subdomain" {
     type = string 
     description = "The subdomain to host a seperate payload server"
-    default = "drop"
+    default = "C2_SUBDOMAIN"
   }
-
-#  data "http" "my_source_ip" {
-#    url = "https://ipv4.icanhazip.com"
-#  }

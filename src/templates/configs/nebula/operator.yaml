@@ -1,10 +1,10 @@
 pki:
-  ca: /opt/infrastructure_setups/redteam-infrastructure/src/templates/certificates/ca.crt
-  cert: /opt/infrastructure_setups/redteam-infrastructure/src/templates/certificates/operator.crt
-  key: /opt/infrastructure_setups/redteam-infrastructure/src/templates/certificates/operator.key
+  ca: /tmp/nebula/ca.crt
+  cert: /tmp/nebula/operator_1.crt
+  key: /tmp/nebula/operator_1.key
 
 static_host_map:
-  "10.69.69.1": ["52.56.92.145:4242"]
+  "10.69.69.1": ["LIGHTHOUSE_IP_ADDRESS:4242"]
 
 lighthouse:
   am_lighthouse: false
